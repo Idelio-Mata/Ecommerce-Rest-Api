@@ -1,5 +1,6 @@
 package com.api.rest.ifood.shopCart.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,14 +16,20 @@ import javax.persistence.*;
 @Entity  // This anotation convert class name to Table on database
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @NoArgsConstructor
-public class Client {
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+public class Product {
 
-  private Long id;
-  private String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String name;
+    private double unitaryValue;
 
-  @Embedded // Anotation to import to use classe below on the current classe
-  private Residence residence;
+    @Builder.Default
+    private Boolean available = true;
+
+    @ManyToOne
+    @JsonIgnore
+    private Restaurant restaurant;
+
 
 }

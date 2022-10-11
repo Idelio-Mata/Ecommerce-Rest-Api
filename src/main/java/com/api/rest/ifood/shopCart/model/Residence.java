@@ -12,8 +12,8 @@ import javax.persistence.Embeddable;
 @Data  // This anotation is for Getters & Setters
 @Embeddable // This anotation avoid to create Table address on database
 @NoArgsConstructor
-public class Address {
-  private String cep;
-  private String complement;
+public class Residence {
+    private String cep;
+    private String complement;
 
 }

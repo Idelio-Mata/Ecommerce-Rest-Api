@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @AllArgsConstructor // This anotation is for contructors
@@ -15,14 +16,15 @@ import javax.persistence.*;
 @Entity  // This anotation convert class name to Table on database
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @NoArgsConstructor
-public class Client {
+public class Restaurant {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-
   private Long id;
   private String name;
+  @OneToMany(cascade = CascadeType.ALL)
+  private List<Product> menu;
 
-  @Embedded // Anotation to import to use classe below on the current classe
+  @Embedded
   private Residence residence;
 
 }
