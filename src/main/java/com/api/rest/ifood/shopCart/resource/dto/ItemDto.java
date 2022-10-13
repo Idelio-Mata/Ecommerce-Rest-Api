@@ -1,4 +1,4 @@
-package com.api.rest.ifood.shopCart.resource;
+package com.api.rest.ifood.shopCart.resource.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

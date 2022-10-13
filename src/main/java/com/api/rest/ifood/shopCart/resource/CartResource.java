@@ -2,6 +2,7 @@ package com.api.rest.ifood.shopCart.resource;
 
 import com.api.rest.ifood.shopCart.model.Cart;
 import com.api.rest.ifood.shopCart.model.Item;
+import com.api.rest.ifood.shopCart.resource.dto.ItemDto;
 import com.api.rest.ifood.shopCart.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,12 @@ public class CartResource {
     @GetMapping("/{id}")     //Method to get data from db.
     public Cart showCart(@PathVariable("id") Long id) {
         return cartService.showCart(id);
+    }
 
+    @PatchMapping("/closeCart/{cartId}") //Method to chage things
+    public Cart closeCart(@PathVariable("cartId") Long cartId,
+                          @RequestParam("paymentForm") int paymentForm) {
+        return cartService.closeCart(cartId, paymentForm);
     }
 
 }

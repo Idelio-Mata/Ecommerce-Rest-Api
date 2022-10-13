@@ -26,7 +26,7 @@ public class Cart {
   @JsonIgnore
   private Client client;
   @OneToMany(cascade = CascadeType.ALL)
-  private List<Item> itens;
+  private List<Item> items;
   private Double totalValue;
 
   @Enumerated
