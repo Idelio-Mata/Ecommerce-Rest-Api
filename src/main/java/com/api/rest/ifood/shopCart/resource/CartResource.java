@@ -22,7 +22,7 @@ public class CartResource {
      * from Service/cartService
      **/
 
-    @PostMapping   //Method to save data into db.
+    @PostMapping   //Method add items to db.
     public Item addItemToCart(@RequestBody ItemDto itemDto) {
         return cartService.addItemToCart(itemDto);
     }
@@ -32,7 +32,7 @@ public class CartResource {
         return cartService.showCart(id);
     }
 
-    @PatchMapping("/closeCart/{cartId}") //Method to chage things
+    @PatchMapping("/closeCart/{cartId}") //Method to close the buy
     public Cart closeCart(@PathVariable("cartId") Long cartId,
                           @RequestParam("paymentForm") int paymentForm) {
         return cartService.closeCart(cartId, paymentForm);
