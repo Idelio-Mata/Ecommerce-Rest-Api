@@ -12,6 +12,7 @@ import com.api.rest.ifood.shopCart.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -53,6 +54,19 @@ public class CartServiceImpl implements CartService {
                         "Close the Cart or Clear");
             }
         }
+
+        List<Double> itemsValue = new ArrayList<>();
+        for (Item itemsToCart : itemsInCart) {
+            double itemTotalValue =
+                    itemsToCart.getProduct().getUnitaryValue() * itemsToCart.getQuantity();
+            itemsValue.add(itemTotalValue);
+        }
+
+        double CartTotalValue = itemsValue.stream()
+                .mapToDouble(eachItemValue -> eachItemValue)
+                .sum();
+
+        cart.setTotalValue(CartTotalValue);
         cartRepository.save(cart);
         return itemRepository.save(itemToAddToCart);
     }
